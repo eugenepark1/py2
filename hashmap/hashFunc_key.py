@@ -5,6 +5,12 @@ Created on Aug 27, 2017
 '''
 
 '''
+hash table: maps keys to values for highly efficient lookup
+one implementation is array of linked list and a hash cod fucntion
+the keys hash code could be an int or long
+if collision is high O(N) where N is the number of keys or lookup can be O(1)
+you can also implment this in balanced binary search tree which would give O(log N) lookup time
+
 you have a list of words given
 '''
 
