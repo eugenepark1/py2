@@ -10,12 +10,10 @@ encapsulation
 inheritance
 polymorphism
 
-Q1) write code to remove dupliecates from an unsorted LL
-Return Kth to last
-delete middle node
-partition 
-3->5->8->5->10->2->1 [partition 5)
-3->1->2->10->5->5->8
+* write code to remove dupliecates from an unsorted LL
+*Return Kth to last
+*delete middle node
+*reverse LL
 
 palindrome
 loop detection
@@ -36,19 +34,61 @@ class ChildB(Base):
 
 ChildA() 
 ChildB()
+
+Node1 -> Node2 -> Node3 -> Node4
 '''
+
+class LL:
+    def __init__(self, root):
+        self.root = root
 
 class Node:
     def __init__(self, data, next=None):
         self.data = data
         self.next = next
 
-class DoubleNode:
+class DoubleNode(Node):
     def __init__(self, data, next=None, prev=None):
-        Node.__init__(self, data, next)
+        #Node.__init__(self, data, next)
+        super(DoubleNode, self).__init__(data, next)
         self.prev = prev
 
-def delete_node_single():
+def traverse(cur_node):
+    if cur_node is not None:
+        print cur_node.data
+        traverse(cur_node.next)
+    else:
+        print "====END===="
+    
+def delete_node_single(LL_ref, delete_node):
+    '''
+    to delete:
+    prev.next = cur.next
+    LL may need root
+    '''
+    prev = None
+    cur = LL_ref.root
+    while True:
+
+        if cur.data == delete_node.data:
+            if prev is not None: # not starting point
+                if cur.next:
+                    prev.next = cur.next
+                else:
+                    prev.next = None
+            else: # starting point to be deleted
+                if cur.next:
+                    LL_ref.root = cur.next
+                else:
+                    LL_ref.root = None
+            break
+        else: # not the node to delete
+            if cur.next:
+                prev = cur
+                cur = cur.next
+            else:
+                break
+
     return
 
 def delete_node_double():
@@ -56,4 +96,24 @@ def delete_node_double():
 
 def is_cyc(head):
     return
+
+n_one = Node(1)
+n_two = Node(2)
+n_three = Node(3)
+n_four = Node(4)
+
+my_LL = LL(n_one)
+n_one.next = n_two
+n_two.next = n_three
+n_three.next = n_four
+
+
+traverse(my_LL.root)
+node_to_delete = n_three
+delete_node_single(my_LL, node_to_delete)
+traverse(my_LL.root)
+
+
+
+
 
