@@ -91,7 +91,23 @@ def delete_node_single(LL_ref, delete_node):
 
     return
 
-def delete_node_double():
+def reverse_LL(myLL):
+    
+    prev = None
+    cur = myLL.root
+    while cur is not None:
+        tmp = cur.next
+
+        cur.next = prev
+
+        prev = cur
+        cur = tmp
+
+        if cur is None:
+            myLL.root = prev
+        
+
+def delete_node_double(node):
     return
 
 def is_cyc(head):
@@ -109,9 +125,13 @@ n_three.next = n_four
 
 
 traverse(my_LL.root)
-node_to_delete = n_three
-delete_node_single(my_LL, node_to_delete)
+reverse_LL(my_LL)
 traverse(my_LL.root)
+
+
+#node_to_delete = n_three
+#delete_node_single(my_LL, node_to_delete)
+#traverse(my_LL.root)
 
 
 
