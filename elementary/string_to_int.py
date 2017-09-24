@@ -49,4 +49,5 @@ def str_to_int(num):
 print str_to_int("123")
 print str_to_int("-123")
 print str_to_int("+123")
+print str_to_int("+ccc")
         
