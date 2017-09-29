@@ -14,22 +14,55 @@ solution is [
     [-1, 0, 1]
     [-1, -1, 2]
 ]
+
+-1 0 1
+-1 1 0
+1 -1 0
+1 0 -1
+0 -1 1
+0 1 -1
+
 '''
+import TwoSum
+
 def ThreeSum(arr):
     solution_set = []
     for i, n in enumerate(arr):
         for j, m in enumerate(arr):
             if i == j:
                 continue
-            for k,o in enumerate(arr):
+            for k, o in enumerate(arr):
                 if k == i or k == j:
                     continue
                 
-                    if n + m + o == 0:
-                        solution_set.append( [i, j, k] )
+                sum = n + m + o
+                
+                if sum == 0:
+                    print "%s %s %s = %s" % (n, m, o, sum)
+                    
+                    
+                    solution_set.append( [i, j, k] )
+    return solution_set
+
+def ThreeSum_sorted(arr):
+    '''
+    this returns indices
+    
+    '''
+    solution_set = []
+    sorted_arr = sorted(arr)
+    
+    for i,n in enumerate(sorted_arr):
+        to_find = -n
+        exists = TwoSum.TwoSum_dict(sorted_arr, to_find)
+        
+        if exists is not None:
+            solution_set.append( [i] + exists)
+
     return solution_set
 
 arr = [-1, 0 , 1, 2, -1, -4]
 
 print ThreeSum(arr)
+print ThreeSum_sorted(arr)
 
