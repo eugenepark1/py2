@@ -1,0 +1,45 @@
+target: dependencies
+	rules
+	rules
+	rules
+	
+make is designed for files that are derived from other files — for example, object (.o) files are derived from source files (e.g. .c files). 
+Any file (a target) that is derived from another one (a dependency) is said to be derived from it, or to depend on it. 
+
+cc -c sum.c
+cc -c main.c
+cc sum.o main.o -o my_sum
+
+The first statement, cc -c sum.c, creates sum.o. 
+So, sum.o is a target. It depends on sum.c. The rule to create sum.o is cc -c sum.c.
+
+The key feature of the make program is dependency checking. 
+What make does with a makefile's statements is: 
+	If any of dependencies is newer than target, or if the target doesn't exist yet, then execute the rules.
+On the other hand, if the target file is newer than its dependencies (by looking at the files' timestamps), then nothing is done. 
+	This is how make implements build avoidance — by using timestamps.
+	
+my_sum: sum.o main.o
+	cc sum.o main.o -o my_sum
+
+sum.o: sum.c sum.h
+	cc -c sum.c
+
+main.o: main.c sum.h
+	cc -c main.c
+
+Remember that make doesn't rebuild what doesn't need rebuilding, based on timestamps. 
+If we edit just main.c, then type make, only the first and third rules will be executed
+
+
+---
+
+Recursive use of make means using make as a command in a makefile. 
+This technique is useful when you want separate makefiles for various subsystems that compose a larger system. 
+For example, suppose you have a sub-directory subdir which has its own makefile, and you would like the containing directory’s makefile to run make on the sub-directory. 
+You can do it by writing this:
+subsystem:
+        cd subdir && $(MAKE)
+which is same as,
+subsystem:
+        $(MAKE) -C subdir

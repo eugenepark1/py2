@@ -15,3 +15,21 @@ solution is [
     [-1, -1, 2]
 ]
 '''
+def ThreeSum(arr):
+    solution_set = []
+    for i, n in enumerate(arr):
+        for j, m in enumerate(arr):
+            if i == j:
+                continue
+            for k,o in enumerate(arr):
+                if k == i or k == j:
+                    continue
+                
+                    if n + m + o == 0:
+                        solution_set.append( [i, j, k] )
+    return solution_set
+
+arr = [-1, 0 , 1, 2, -1, -4]
+
+print ThreeSum(arr)
+
