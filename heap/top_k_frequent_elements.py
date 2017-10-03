@@ -29,14 +29,28 @@ class Test(unittest.TestCase):
         
         #bucket
         for ele,freq in freqMap.iteritems():
-            if bucket[freq] is None:
+            try:
+                if bucket[freq] is None:
+                    bucket[freq] = []
+            except IndexError:
+                to_add = freq - len(bucket) + 1
+                for i in range(to_add):
+                    bucket.append(None)
                 bucket[freq] = []
-            bucket[freq].append[ele]
+            bucket[freq].append(ele)
+
         
-        for i in reverse(range(bucket)):
-            print i
-        
-        return
+        ret = []
+        for i, e in reversed(list(enumerate(bucket))):
+            if len(e) < k:
+                ret += e
+                k -= len(e)
+            else:
+                e = e[:k]
+                ret += e
+                break
+
+        self.assertItemsEqual(expected, ret, "")
 
 
 if __name__ == "__main__":
