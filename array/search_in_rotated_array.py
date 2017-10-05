@@ -16,8 +16,14 @@ def search(arr, tgt):
     return
 
 def binsearch(arr, tgt):
-    mid = len(arr)/2
     
+    if len(arr) == 1:
+        if arr[0] == tgt:
+            return True
+        else:
+            return False
+    
+    mid = len(arr)/2
     if tgt == arr[mid]:
         return True
     
