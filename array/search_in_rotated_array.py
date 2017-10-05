@@ -12,6 +12,25 @@ you are given a target value to search. if found in the array, return its index,
 import unittest
 
 
+def findMin(arr):
+    # [4,5,6,7,0,1,2]
+    low = 0
+    high = len(arr) - 1
+    while (low < high):
+        mid = (low + high) / 2
+        
+        # found the middle minimum
+        if (mid > 0 and arr[mid] < arr[mid -1]):
+            return arr[mid]
+        
+        # move either low->mid or mid<-high
+        if (arr[low] <= arr[mid] and arr[mid] > arr[high]):
+            low = mid + 1
+        else:
+            high = mid - 1
+        
+    return arr[low]
+
 def search(arr, tgt):
     low = 0
     high = len(arr) - 1
@@ -66,9 +85,11 @@ class Test(unittest.TestCase):
         tgt = 0
         exists = binsearch(arr, tgt)
         index = search(arr_pivoted, tgt)
+        min = findMin(arr_pivoted)
 
         self.assertEqual(exists, True, "binsearch")
         self.assertEqual(index, 4, "pivoted")
+        self.assertEqual(min, 0, "min")
 
 
 if __name__ == "__main__":
