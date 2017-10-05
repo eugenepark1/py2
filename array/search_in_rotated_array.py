@@ -13,7 +13,28 @@ import unittest
 
 
 def search(arr, tgt):
-    return
+    low = 0
+    high = len(arr) - 1
+    
+    while low < high:
+        mid = (low + high) / 2
+        
+        if (arr[mid] < arr[0] and tgt < arr[0]):
+            num = arr[mid]
+        else:
+            if tgt < arr[0]:
+                num = -float("inf")
+            else:
+                num = float("inf")
+
+        if (num < tgt):
+            low = mid + 1
+        elif (num > tgt):
+            high = mid
+        else:
+            return mid
+    
+    return -1
 
 def binsearch(arr, tgt):
     
@@ -22,7 +43,7 @@ def binsearch(arr, tgt):
             return True
         else:
             return False
-    
+
     mid = len(arr)/2
     if tgt == arr[mid]:
         return True
@@ -40,9 +61,14 @@ class Test(unittest.TestCase):
         pass
     
     def test_binsearch(self):
-        arr = []
-        tgt = 7
-        pass
+        arr = [0,1,2,4,5,6,7]
+        arr_pivoted = [4,5,6,7,0,1,2]
+        tgt = 0
+        exists = binsearch(arr, tgt)
+        index = search(arr_pivoted, tgt)
+
+        self.assertEqual(exists, True, "binsearch")
+        self.assertEqual(index, 4, "pivoted")
 
 
 if __name__ == "__main__":
