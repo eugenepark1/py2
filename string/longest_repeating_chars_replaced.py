@@ -41,6 +41,33 @@ class Test(unittest.TestCase):
             * for above ops -> length of substr of repeated chars
         
         '''
+        
+        s_one = "ABAB"
+        s_two = "AABABBA"
+        s_three = "AAAA"
+        
+        cur_str = s_one
+        
+        
+        def extend_arr(arr, i):
+            return
+        candidates = []
+        
+        prev_chr = None
+        prev_repeated = 0
+        for ind, chr in enumerate(cur_str):
+            if prev_chr is None:
+                chr = prev_chr
+            elif chr == prev_chr:
+                # no need to convert this
+                prev_repeated += 1
+            else:
+                # possible convert this
+                if chr != cur_str[ind+1]:
+                    candidates.append( (ind, prev_repeated+1) ) # this isnt looking forward
+                else:
+                    # still candidate but need correct prev_repated o/w length of substr for repeated chrs
+        
         pass
 
 
