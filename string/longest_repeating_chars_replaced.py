@@ -53,6 +53,11 @@ class Test(unittest.TestCase):
             return
         candidates = []
         
+        i = 0
+        while i < len(cur_str):
+            
+        
+        
         prev_chr = None
         prev_repeated = 0
         for ind, chr in enumerate(cur_str):
