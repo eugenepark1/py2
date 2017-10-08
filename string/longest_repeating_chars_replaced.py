@@ -21,7 +21,7 @@ output 4
 no replace
 '''
 import unittest
-from curses.ascii import CAN
+
 
 
 class Test(unittest.TestCase):
@@ -47,73 +47,68 @@ class Test(unittest.TestCase):
         s_two = "AABABBA"
         s_three = "AAAA"
         
-        cur_str = s_one
+        s_one = "AAABCD"
+        s_one = "AAABAAABAAAB"
         
+        cur_str = [i for i in s_one] + [None]
         
-        def extend_arr(arr, i):
-            return
-        candidates = []
         
         i = 0
-        candidates = {}
         prev_char = None
         prev_char_len = 0
-        
-        delayed_reset = False
-        
-        # goal
-        # candidates = {
-        #    1 : 7
-        #    2 : 7
-        #    3 : 4
-        #}
-        def look_ahead():
-            return
-        
-        keep_going = False
-        keep_going_index = 0
-        while i < len(cur_str):
-            if prev_char is None:
-                prev_char == cur_str[i]
+
+        X = {}
+        Y = {}
+        add_prev = False
+        add_prev_i = 0
+        while True:
+            print "%s\n\t%s, %s" % (cur_str[i], prev_char, prev_char_len)
+    
+            if cur_str[i] is None:
+                break
+            
+            
+            if prev_char is None: 
+                prev_char = cur_str[i]
                 prev_char_len = 1
             elif cur_str[i] == prev_char:
                 prev_char_len += 1
-            else: # different chr found
-                if cur_str[i-1] == cur_str[i+1]:
+            elif cur_str[i-1] == cur_str[i+1]: # diff char (mid) 
+                
+                if add_prev:
+                    X[add_prev_i] += prev_char_len
+                    X[i] = prev_char_len
+                    add_prev_i = i
                 else:
-                    candidates[i] = prev_char_len
+                    X[i] = prev_char_len
+                    add_prev = True
+                    add_prev_i = i
+
+                prev_char_len = 0
+            else: # diff char (end)
+                if add_prev:
+                    X[add_prev_i] += prev_char_len
+                    add_prev = False
                 
-                
-                if keep_going: # (2)
-                    # need to record (1)
-                    candidates[keep_going_index] = prev_char_len
+                X[i] = prev_char_len
+                prev_char_len = 0
                     
-                else: # not keep_going
-                    if cur_str[i-1] == cur_str[i+1]: # (1)
-                        keep_going = True
-                        prev_char_len += 1
-                        keep_going_index = i
-                        
-                    else: #(3)
-                        
-                # reset or not
-                #       1      2/1      3
-                # A A A B A A A B A A A B C
+                
+                
+                
+
                 
                 # Z means depends on the prev char changed
                 # X means change it
                 # 0  1  2 X|3 Z/1  Z/2
                 # A  A  A  B   C    D
                 
-                # 0  1  2 X|6 0  1  2  X|3
-                # A  A  A  B  A  A  A  B
+                # 0  1  2 X|6,add 0  1  2  X|6,add           X|3
+                # A  A  A    B    A  A  A     B     A  A  A  B   None
 
-                    
-                
-                
             i += 1
                 
-
+        print X
         pass
 
 
