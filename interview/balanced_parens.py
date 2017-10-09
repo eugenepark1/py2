@@ -7,5 +7,5 @@ Created on Oct 9, 2017
 ()
 {}
 
-returns true of a string has balanced ([{}])
+returns true of a string has balanced ([{}]) 
 '''
