@@ -5,7 +5,7 @@ Created on Oct 2, 2017
 
 1) sort the array - O(N lg N)
 2) min-heap O(N log k)
-3) selection algo based on the partition methoed - the samed used for quicksort
+3) selection algo based on the partition method - the same used for quicksort
     O(N) best O(N^2) worst
     randomized input to guarantee O(n)
 '''

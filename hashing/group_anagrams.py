@@ -35,7 +35,7 @@ class Test(unittest.TestCase):
 
     def testName(self):
         pass
-    
+
     def test_anagram(self):
         arr = ["eat", "tea", "tan", "ate", "nat", "bat"]
 

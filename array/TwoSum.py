@@ -28,7 +28,6 @@ def TwoSum(arr, tgt):
 def TwoSum_dict(arr, tgt):
     # O(N + N + N + 1)
     tmp_dict = dict( zip(arr, [i for i,n in enumerate(arr)]) )
-    print tmp_dict
     for i, n in enumerate(arr):
         look_for = tgt - n
         if look_for in tmp_dict:
