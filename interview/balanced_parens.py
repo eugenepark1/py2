@@ -9,3 +9,7 @@ Created on Oct 9, 2017
 
 returns true of a string has balanced ([{}])   
 '''
+
+
+def is_balanced(input_str):
+    return
