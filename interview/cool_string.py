@@ -74,5 +74,6 @@ def cool_string(input_str):
 assert cool_string('aaabbbc') is True
 assert cool_string('aaabbbcccc') is True
 assert cool_string('aaabbbcc') is False
+assert cool_string('aaaabbbbcc') is False
     
     
