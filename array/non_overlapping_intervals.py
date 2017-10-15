@@ -11,3 +11,11 @@ output = 1
 
 
 '''
+
+
+def how_many_to_remove(arr):
+    return
+
+arr = [ [1,2], [2,3], [3,4], [1,3] ] 
+
+print how_many_to_remove(arr)
