@@ -13,7 +13,14 @@ queues = {
         qn: (weightn, num_of_workersn)
         }
 
-i think (1,1) = (8,8)
+where (1,1) == (8,8) as q_constant = weight/num_of_workers
+
+jobs = (<cpus>, <time>)
+where cpu > 1, reduces num_of_workes by <cpus>-1 until <time>
+
+
+    now, if cpus is > 1, it will reduce the number of jobs which can be run on the node of the queue
+    so this has to be taken into an account
 '''
 
 import random
@@ -48,12 +55,26 @@ times = []
 queues = dict( zip( [i for i in range(12)], [(random.randint(0,12), 4) for i in range(12)]) )
 print queues
 
-def qs_balanced_value(queues):
+
+jobs = [(random.randint(1,10), random.randint(1,10)) for i in range(10)]
+def assign(jobs, queues):
+    return
+
+def calculate_stddev_balanceConstant(queues):
     '''
     lower the value the more balanced it is
+    
+    queues = {
+        q1: (weight1, num_of_workers1),
+        ...
+        qn: (weightn, num_of_workersn)
+    }
+    
+    balance_constant should be elapsed time
+    
     '''
     q_constant = [ tup_v[0]/tup_v[1] for tup_v in queues.itervalues()]
     print q_constant
     return stddev(q_constant)
     
-print qs_balanced_value(queues)
+print calculate_stddev_balanceConstant(queues)

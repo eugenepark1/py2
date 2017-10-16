@@ -46,10 +46,10 @@ for k,v in freqMap.iteritems():
         compile_times += [k]*v
 print compile_times
 
-#compile_times = [5,1,1,1,1]
+compile_times = [5,3,2,1,5]
 #compile_times.reverse()
-tp = 48
-max_parallel = 12*4
+tp = 4
+max_parallel = 4
 
 running = []
 elapsed_time = 0
@@ -77,14 +77,14 @@ while True:
         else:
             break
 
-    elapsed_time += 1
-    
     print "remaing jobs: %s" % compile_times
     print "running jobs: %s" % running
     print "elapsed time %s"  % elapsed_time
 
     if len(running) == 0:
         break
+    
+    elapsed_time += 1
 
     
 
