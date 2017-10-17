@@ -51,30 +51,58 @@ def stddev(data, ddof=0):
     return pvar**0.5
 
 
-times = []
-queues = dict( zip( [i for i in range(12)], [(random.randint(0,12), 4) for i in range(12)]) )
-print queues
-
-
-jobs = [(random.randint(1,10), random.randint(1,10)) for i in range(10)]
-def assign(jobs, queues):
-    return
-
-def calculate_stddev_balanceConstant(queues):
+def calculate_balanceConstant(queue_status):
     '''
-    lower the value the more balanced it is
+    A queue holds N jobs where a job = Job(dur, cpu)
+    q_dur = sum(job_dur)
+    q_resource = sum(job_cpu)
     
-    queues = {
-        q1: (weight1, num_of_workers1),
+    queue_status = {
+        q1: (q_dur1, q_resource1, num_of_workers1),
         ...
-        qn: (weightn, num_of_workersn)
+        qn: (q_durn, q_resourcen, num_of_workersn)
     }
     
-    balance_constant should be elapsed time
+    q_weight should be elapsed time.. but 
+    easiest q_weight is q_dur / (q_resources / num_of_workers)
     
+    q_constant = stddev of q_weights
+    
+    @return: q_constant (lower the better)
     '''
-    q_constant = [ tup_v[0]/tup_v[1] for tup_v in queues.itervalues()]
-    print q_constant
-    return stddev(q_constant)
+    def calculate_qWeight(qDur, qResource, numWorker):
+        
+        base = float(qResource) / float(numWorker)
+        #print "qDur %s qResource %s numWorker %s base %s" % (qDur, qResource, numWorker, base)
+
+        return qDur/ base
     
-print calculate_stddev_balanceConstant(queues)
+    q_constant = [ calculate_qWeight(tup_v[0], tup_v[1], tup_v[2]) for tup_v in queue_status.itervalues()]
+    #print q_constant
+    return stddev(q_constant)
+
+queue_status = dict( zip( ["node_%s" % i for i in range(12)], [(random.randint(12,36), random.randint(4,5), 4) for i in range(12)]) )
+print "q_status: %s" % queue_status
+print "balanceConstant: %s" % calculate_balanceConstant(queue_status)
+
+jobs_to_assign = [(random.randint(1,10), random.randint(1,2)) for i in range(10)]
+print "jobs %s" % jobs_to_assign
+def assign(jobs, queue_status):
+    '''
+    goal here is to distribute jobs to queues so that calculateConstant for queues are minimized
+    
+    assignMap = {
+            <q_name1>: [job1...jobn]
+            ...
+            <q_namen>: [job1...jobn]
+        }
+    '''
+    assignMap = {}
+    return assignMap
+
+print assign(jobs_to_assign, queue_status)
+
+
+
+
+
