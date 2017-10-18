@@ -75,12 +75,13 @@ def assign(jobs, queue_status):
     now if i had [3,3,3,3,3], then i would want
     [3]x4 to q(1) and [3]x1 to (q2)
     
-    [10,10,10,10,10]
+    
     
     # of workers and the number of jobs are the most important
     4 workers get 4 jobs and 1 worker get 1 job
     next Q is which 4 jobs and which 1 job       - we figured out the number of jobs, now need to figure out which
-        
+    easy case [10,10,10,10,10]
+    hard case [1,4,5,6,2] if q1 and q2 are empty then it doesnt matter, but if queue arent empty then we need some work
 
     '''
     print calculate_balanceConstant(queue_status)
