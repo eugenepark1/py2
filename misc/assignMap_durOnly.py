@@ -89,6 +89,7 @@ def assign(jobs, queue_status):
     q_loads = [ tup_v[0]/tup_v[1] for tup_v in queue_status.itervalues()]
     q_loads.sort()
 
+    print q_loads
 
 
 
@@ -100,6 +101,7 @@ num_of_jobs = 10000
 jobs_to_assign = [random.randint(1,10) for i in range(num_of_jobs)]
 
 print assign(jobs_to_assign, queue_status)
+
 
 
 
