@@ -87,6 +87,7 @@ def assign(jobs, queue_status):
     print calculate_balanceConstant(queue_status)
     q_loads = [ tup_v[0]/tup_v[1] for tup_v in queue_status.itervalues()]
     q_loads.sort()
+    print q_loads
 
 
 
