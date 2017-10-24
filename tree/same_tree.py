@@ -20,7 +20,7 @@ def is_same(node1, node2):
         return True
 
     elif node1.data == node2.data:
-        return is_same(node1.left, node2.left) and is_same(node2.right, node2.right)
+        return is_same(node1.left, node2.left) and is_same(node1.right, node2.right)
     
     return False
 
@@ -36,4 +36,4 @@ one.right = three
 two.left = four
 three.right = five
 
-print is_same(one, three)
+print is_same(one, one)

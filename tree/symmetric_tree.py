@@ -16,7 +16,7 @@ def is_same(node1, node2):
         return True
 
     elif node1.data == node2.data:
-        return is_same(node1.left, node2.left) and is_same(node2.right, node2.right)
+        return is_same(node1.left, node2.right) and is_same(node1.right, node2.left)
     
     return False
 
@@ -28,12 +28,24 @@ oseven = Node(7)
 oeight = Node(8)
 oten = Node(10)
 
+ofive.left = osix
+ofive.right = onine
+osix.left = oseven
+osix.right = oeight
+onine.right = oten
+
 mfive = Node(5)
 msix = Node(6)
 mnine = Node(9)
 mseven = Node(7)
 meight = Node(8)
 mten = Node(10)
+
+mfive.left = mnine
+mfive.right = msix
+mnine.left = mten
+msix.right = mseven
+msix.left = meight
 
 
 print is_same(ofive, mfive)
