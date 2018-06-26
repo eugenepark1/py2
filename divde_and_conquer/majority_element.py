@@ -26,5 +26,5 @@ def majority_element(arr):
     return major
 
 
-arr = [1,2,3,4,5,1,1,1,1,1,1]
+arr = [1,2,2,3,4,5,1,1,1,1,1,1]
 print majority_element(arr)
