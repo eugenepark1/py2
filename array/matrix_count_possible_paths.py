@@ -20,3 +20,16 @@ def print_grid(grid):
 
 grid = create_grid(3, 3)
 print_grid(grid)
+
+
+def count_paths(x,y,xx,yy):
+    print "%s %s" % (x,y)
+    if x == xx and y == yy:
+        return 1
+    elif x > xx or y < yy:
+        return 0
+    else:
+        # move right or down
+        return count_paths(x+1,y, xx, yy) + count_paths(x, y-1, xx, yy)
+
+print count_paths(0,2, 2,0)
