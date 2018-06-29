@@ -38,8 +38,8 @@ def knapSack(W , wt , val , n):
     # (1) nth item included
     # (2) not included
     else:
-        return max(val[n-1] + knapSack(W-wt[n-1] , wt , val , n-1),
-                   knapSack(W , wt , val , n-1))
+        return max(val[n-1] + knapSack(W-wt[n-1] , wt , val , n-1),     # included
+                   knapSack(W , wt , val , n-1))                        # not included
  
 #Time Complexity: O(nW) where n is the number of items and W is the capacity of knapsack.
 # build K(n, W)
@@ -47,13 +47,14 @@ def knapSack_efficient(W, wt, val, n):
     K = [[0 for x in range(W+1)] for x in range(n+1)]
  
     # Build table K[][] in bottom up manner
-    for i in range(n+1):
-        for w in range(W+1):
+    for i in range(n+1): # loop through values
+        for w in range(W+1): # loop through weights
+            print "(i %s, w %s)" % (i, w)
             if i==0 or w==0:
                 K[i][w] = 0
-            elif wt[i-1] <= w:
+            elif wt[i-1] <= w:  # the weight of item does not exceeds the capacity so we have to check whether we should include or not
                 K[i][w] = max(val[i-1] + K[i-1][w-wt[i-1]],  K[i-1][w])
-            else:
+            else: # the weight of item exceeds the capacity so not including
                 K[i][w] = K[i-1][w]
  
     return K[n][W]
@@ -65,3 +66,4 @@ wt = [10, 20, 30]
 W = 50
 n = len(val)
 print knapSack(W , wt , val , n)
+print knapSack_efficient(W , wt , val , n)
