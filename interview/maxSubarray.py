@@ -62,7 +62,8 @@ def find_maxSum(arr):
     return (start_index, end_index)
 
 # you cant make the decision to move (s) to index 3 until you are there and look at index 2 and 1
-testArr = [2,-5,2,3,4]
+# you cant move (e) unless curSum > maxSum
+testArr = [2,-5,3,4,5]
 print find_maxSum(testArr)
 
 print find_maxSum([-1, 1, 2])
