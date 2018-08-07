@@ -12,5 +12,5 @@ selection algo based on the partition method, same as quicksort()
 '''
 
 
-def findKthLargest(arr):
+def findKthLargest(arr, kth):
     return
