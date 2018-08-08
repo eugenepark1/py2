@@ -12,10 +12,14 @@ Input string may contain leading or trailing spaces. However, your reversed stri
 You need to reduce multiple spaces between two words to a single space in the reversed string.
 '''
 
+import re
 
 
-def reverseWords(self, s):
+def reverseWords(s):
         """
         :type s: str
         :rtype: str
         """
+        return ' '.join(re.compile('\S+').findall(s)[::-1])
+    
+print reverseWords("the sky is blue")
