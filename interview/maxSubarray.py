@@ -32,6 +32,40 @@ if you add the cur_val and sum increases, then move (e)
 
 '''
 
+def kadane_algo(arr):
+    '''
+    max_so_far = 0
+    max_ending_here = 0
+    
+    loop for each element of the array:
+        (a) max_ending_here = max_ending_here + arri[i]
+        (b) if max_ending_here < 0:
+                max_ending_here = 0
+        (c) if max_so_far < max_ending_here:
+                max_so_far = max_ending_here
+    
+    return max_so_far
+    '''
+    max_so_far = 0
+    max_ending_here = 0
+    
+    for ele in arr:
+        max_ending_here = max_ending_here + ele
+        #max_ending_here = max(max_ending_here, max_ending_here + ele)
+        
+        if max_ending_here < 0:
+            max_ending_here = 0
+            
+        if max_so_far < max_ending_here:
+            max_so_far = max_ending_here
+    
+        print "%s: %s %s" % (ele, max_ending_here, max_so_far)
+    
+    return max_so_far
+
+
+
+
 def find_maxSum(arr):
     '''
     continuous: there is some start index and an end index
@@ -64,6 +98,8 @@ def find_maxSum(arr):
 # you cant make the decision to move (s) to index 3 until you are there and look at index 2 and 1
 # you cant move (e) unless curSum > maxSum
 testArr = [2,-5,3,4,5]
-print find_maxSum(testArr)
+#print find_maxSum(testArr)
+#print find_maxSum([-1, 1, 2])
 
-print find_maxSum([-1, 1, 2])
+
+print kadane_algo([-3,-4,4,-1,-2,1,3,-3])
