@@ -28,7 +28,7 @@ def traverse(x, y, max_x, max_y, visited, tab_cnt, action, lot):
     tab_cnt =  tab_cnt + 1
     
     tmp_visited = copy.deepcopy(visited)
-    visited.append((x,y))
+    tmp_visited.append((x,y))
     
     tab_str = "\t".join(['' for i in range(tab_cnt)])
     print "%s(%s, %s) %s" % (tab_str, x, y, action)
@@ -38,45 +38,50 @@ def traverse(x, y, max_x, max_y, visited, tab_cnt, action, lot):
     cur_value = lot[x][y]
     if lot[x][y] == 9:
         print "%sfound 9" % tab_str
-        return 1
+        return 0
     elif lot[x][y] == 0:
         print "%sfound 0" % tab_str
         return -1
     else:
-        valid_values = [0]
+        valid_values = []
         
         print "%s%s" % (tab_str, tmp_visited)
         if y > 0 and (x,y-1) not in tmp_visited:
-            print "%sgoing left" % tab_str
-            up = traverse(x, y-1, max_x, max_y, visited, tab_cnt, "left", lot)
-            if up > 0:
-                valid_values.append(up)
+            
+            left = traverse(x, y-1, max_x, max_y, tmp_visited, tab_cnt, "left", lot)
+            print "%sgoing left %s" % (tab_str, left)
+            if left >= 0:
+                valid_values.append(left)
         else:
             print "%snot going left %s %s" % (tab_str, y, (x,y-1))
         
         if y < max_y and (x, y+1) not in tmp_visited:
-            print "%sgoing right" % tab_str
-            down = traverse(x, y+1, max_x, max_y, visited, tab_cnt, "right", lot)
-            if down > 0:
-                valid_values.append(down)
+            
+            right = traverse(x, y+1, max_x, max_y, tmp_visited, tab_cnt, "right", lot)
+            print "%sgoing right %s" % (tab_str, right)
+            if right >= 0:
+                valid_values.append(right)
         
         if x > 0 and (x-1,y) not in tmp_visited:
-            print "%sgoing up" % tab_str
-            left = traverse(x-1, y, max_x, max_y, visited, tab_cnt, "up", lot)
-            if left > 0:
-                valid_values.append(left)
+            up = traverse(x-1, y, max_x, max_y, tmp_visited, tab_cnt, "up", lot)
+            print "%sgoing up %s" % (tab_str, up)
+            if up >= 0:
+                valid_values.append(up)
         
         print "%s%s" % (tab_str, tmp_visited)
         if x < max_x and (x+1,y) not in tmp_visited:
-            print "%sgoing down" % tab_str
-            right = traverse(x+1, y, max_x, max_y, visited, tab_cnt, "down", lot)
-            if right > 0:
-                valid_values.append(right)
+            down = traverse(x+1, y, max_x, max_y, tmp_visited, tab_cnt, "down", lot)
+            print "%sgoing down %s" % (tab_str, down)
+            if down >= 0:
+                valid_values.append(down)
         else:
             print "%snot going down %s %s %s" % (tab_str, x, max_x, (x+1,y))
     
         print "%svalid values: %s" % (tab_str, valid_values)
-        return max(valid_values) + 1
+        if len(valid_values) > 0:
+            return min(valid_values) + 1
+        else:
+            return 1
 
 
 for k,i in enumerate(lot):
