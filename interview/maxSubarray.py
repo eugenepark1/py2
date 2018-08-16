@@ -31,6 +31,7 @@ if you add the cur_val and sum increases, then move (e)
 
 
 '''
+from array import array
 
 def kadane_algo(arr):
     '''
@@ -48,20 +49,24 @@ def kadane_algo(arr):
     '''
     max_so_far = 0
     max_ending_here = 0
+    start_index = 0
+    last_index = 0
     
-    for ele in arr:
+    for cur_index, ele in enumerate(arr):
         max_ending_here = max_ending_here + ele
         #max_ending_here = max(max_ending_here, max_ending_here + ele)
         
         if max_ending_here < 0:
             max_ending_here = 0
+            start_index = cur_index + 1
             
-        if max_so_far < max_ending_here:
+        if max_so_far <= max_ending_here:
             max_so_far = max_ending_here
+            last_index = cur_index
     
-        print "%s: %s %s" % (ele, max_ending_here, max_so_far)
+        #print "%s: %s %s" % (ele, max_ending_here, max_so_far)
     
-    return max_so_far
+    return (max_so_far, start_index, last_index)
 
 
 
@@ -95,11 +100,34 @@ def find_maxSum(arr):
 
     return (start_index, end_index)
 
+
+def print_result(arr, result):
+    max_sum, si, li = result
+    '''
+    newArr = []
+    for i,v in enumerate(arr):
+        if i == si:
+            newArr.append("%s (s)" % v)
+        elif i == li:
+            newArr.append("%s (l)" % v)
+        else:
+            newArr.append(v)
+    print newArr
+    print "max_sum %s" % max_sum
+    '''
+    print arr
+    print result
+
 # you cant make the decision to move (s) to index 3 until you are there and look at index 2 and 1
 # you cant move (e) unless curSum > maxSum
 testArr = [2,-5,3,4,5]
 #print find_maxSum(testArr)
 #print find_maxSum([-1, 1, 2])
 
+testArr_one = [-3,-4, 4,-1,-2,1,3,-3]
+result = kadane_algo(testArr_one)
+print_result(testArr_one, result)
 
-print kadane_algo([-3,-4,4,-1,-2,1,3,-3])
+testArr_two = [-3,-4, 4,-1,-4,1,3,-3]
+result = kadane_algo(testArr_two)
+print_result(testArr_two, result)
