@@ -13,3 +13,11 @@ maximum flow
 minimum cost maximum flow
 min cut
 
+
+topological sort
+	topological sorting of vertices of a Directed Acyclic Graph is an ordering of the vertices v1, v2,...vn in such a way, 
+	that if there is an edge directed towards vertex vj from vertex vi, then vi comes before vj
+	
+	(1) -> (2)   ->  (4) 
+	    -> (3)   ->  
+	                  ->  (5)
