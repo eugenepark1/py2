@@ -32,13 +32,20 @@ def splitArray(nums, m):
     :type m: int
     :rtype: int
   
+     n=5
+     m=2
+  
       Q1) how do we come up with these permutations?
     [7] [2,5,10,8]       7 25           1 4
     [7,2] [5,10,8]       9 23           2 3
     [7,2,5] [10,8]       14 18          3 2
     [7,2,5,10] [8]       24 8           4 1
     
-    [7] [2] [5,10,8]
+    
+    n=5
+    m=3
+    
+    [7] [2] [5,10,8]                     1 1 3
     [7] [2,5] [10,8]
     [7] [2,5,10] [8]
     
@@ -48,9 +55,27 @@ def splitArray(nums, m):
     [7,2,5] [10] [8]
     """
     
+    n = len(arr)
+    m=2
+    1 n-(m-1)
+    ...
+    n-(m-1) 1
     
+    m=3
+    1 1 n-(m-1)
+    ...
+    n-(m-1) 1 1
+    
+    1, 2, ... m
+    
+    split_permutations = []
+    cur_m_buckets = [0 for i in range(m)]
     while True:
         
+        
+            
+            
+            
     
     
 nums = [7,2,5,10,8]
