@@ -25,10 +25,34 @@ The best way is to split it into [7,2,5] and [10,8],
 where the largest sum among the two subarrays is only 18.
 '''
 
-class Solution(object):
-    def splitArray(self, nums, m):
-        """
-        :type nums: List[int]
-        :type m: int
-        :rtype: int
-        """
+
+def splitArray(nums, m):
+    """
+    :type nums: List[int]
+    :type m: int
+    :rtype: int
+  
+      Q1) how do we come up with these permutations?
+    [7] [2,5,10,8]       7 25           1 4
+    [7,2] [5,10,8]       9 23           2 3
+    [7,2,5] [10,8]       14 18          3 2
+    [7,2,5,10] [8]       24 8           4 1
+    
+    [7] [2] [5,10,8]
+    [7] [2,5] [10,8]
+    [7] [2,5,10] [8]
+    
+    [7,2] [5] [10,8]
+    [7,2] [5,10] [8]
+  
+    [7,2,5] [10] [8]
+    """
+    
+    
+    while True:
+        
+    
+    
+nums = [7,2,5,10,8]
+m = 2
+print splitArray(nums, m)
