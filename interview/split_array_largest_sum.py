@@ -55,6 +55,14 @@ def splitArray(nums, m):
     [7,2,5] [10] [8]                     3 1 1
     """
     
+    def perm(m, n):
+        if m == 1:  # base case
+            return [(n,)]
+        perms = []
+        for s in range(1, n):  # combine possible start values: 1 through n-1 ...
+            for p in perm(m-1, n-s):  # ... with all appropriate smaller perms 
+                perms.append((s,) + p)
+        return perms
     
     def generate_permutations(m, n):
         all = []
