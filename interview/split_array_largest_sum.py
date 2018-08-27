@@ -35,7 +35,7 @@ def splitArray(nums, m):
      n=5
      m=2
   
-      Q1) how do we come up with these permutations?
+    1) come up with these permutations
     [7] [2,5,10,8]       7 25           1 4
     [7,2] [5,10,8]       9 23           2 3
     [7,2,5] [10,8]       14 18          3 2
@@ -46,15 +46,34 @@ def splitArray(nums, m):
     m=3
     
     [7] [2] [5,10,8]                     1 1 3
-    [7] [2,5] [10,8]
-    [7] [2,5,10] [8]
+    [7] [2,5] [10,8]                     1 2 2
+    [7] [2,5,10] [8]                     1 3 1
     
-    [7,2] [5] [10,8]
-    [7,2] [5,10] [8]
+    [7,2] [5] [10,8]                     2 1 2
+    [7,2] [5,10] [8]                     2 2 1
   
-    [7,2,5] [10] [8]
+    [7,2,5] [10] [8]                     3 1 1
     """
     
+    
+    def generate_permutations(m, n):
+        all = []
+        cur = [0 for i in range(m)]
+        len_perm = m*2
+        while True:
+            for i in range(m):
+                if cur[i] == 0:
+                    if i != m-1:
+                        cur[i] = 1
+                    else:
+                        cur[i] = n-m
+            
+            all.append(cur)
+            if len(all) >= len_perm:
+                break
+        return all
+    
+    '''
     n = len(arr)
     m=2
     1 n-(m-1)
@@ -71,8 +90,16 @@ def splitArray(nums, m):
     split_permutations = []
     cur_m_buckets = [0 for i in range(m)]
     while True:
-        
-        
+        # init
+        for i in range(cur_m_buckets):
+            if i == m-1:
+                
+            else:
+                cur_m_buckets[i] = 1
+            
+            
+        split_permutations.append(cur_m_buckets)
+    ''' 
             
             
             
