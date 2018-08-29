@@ -1,7 +1,7 @@
 '''
 Created on May 6, 2018
 
-@author: eugen
+@author: eugene
 '''
 
 
@@ -11,8 +11,8 @@ Created on May 6, 2018
 numOne = [1,5,8]
 numTwo = [3,5,6,7]
 
-numOne = list(numOne.reverse())
-numTwo = list(numTwo.reverse())
+numOne.reverse()
+numTwo.reverse()
 
 sum = 0
 for i in range(max(len(numOne), len(numTwo))):
@@ -21,7 +21,9 @@ for i in range(max(len(numOne), len(numTwo))):
         sum += to_add
         print "%s %s %s %s" % (numOne[i], numTwo[i], i, to_add)
     except IndexError:
-        # need to do something
+        '''
+        one is greater than the other
+        '''
         if i < len(numOne):
             to_add =  numOne[i] * 10**i
         else:
