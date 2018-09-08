@@ -1,0 +1,16 @@
+look at tree/bin_tree_search.ph symmetric_tree.py same_tree.py
+
+
+Problem solving:
+	(1) Figure out what to code
+		find a pattern from input->output
+	(2) Able to code what you need to code
+		
+Brute Force
+Divide-and-conquer
+decrease-and-conquer
+transform-and-conquer
+space and time tradeoffs
+Dynamic programming
+Greedy Algorithm
+Iterative Improvements
