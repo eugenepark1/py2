@@ -17,11 +17,14 @@ intervals = [(1,2), (2,3), (3,4), (1,3)]
 def nonoverlap(intervals):
     '''
     overlapping:
-        s is between (s,e)
-        e is between (s,e)
+        s is between (s,e)  (1,2) (1,3) overlap  (1,2) (2,3) not overlap  
+        e is between (s,e)  (1,3) (2,3) overlap  (1,3) (3,5) not overlap
         
     if cur_intv nooverlapping in tmp_intvs:
         add to tmp_intvs
+        
+
+    1,2 1,3   same same (s)
     '''
     
     tmp_intvs = []
@@ -31,7 +34,7 @@ def nonoverlap(intervals):
         overlap = False
         for tmp_intv in tmp_intvs:
             t_start, t_end = tmp_intv
-            if (c_start > t_start and c_start < t_end) or (c_end > t_start and c_end < t_end):
+            if (c_start >= t_start and c_start < t_end) or (c_end > t_start and c_end <= t_end):
                 overlap = True
                 break
         if not overlap:
