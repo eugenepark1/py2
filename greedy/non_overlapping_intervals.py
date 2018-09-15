@@ -4,6 +4,11 @@ Created on Oct 9, 2017
 @author: eugene
 
 given a collection of intervals, find the min number of intervals you need to remove to make the rest of the interval non-overlapping
+
+task1: make the intervals non-overlapping
+task2: min number of intervals to remove == remove big interval
+
+
 [ [1,2], [2,3], [3,4], [1,3] ]
 output 1  [1,3] should be removed
 
@@ -13,7 +18,7 @@ classic greedy problem : interval scheduling
 '''
 
 
-intervals = [(1,2), (2,3), (3,4), (1,3)]
+
 def nonoverlap(intervals):
     '''
     overlapping:
@@ -43,5 +48,8 @@ def nonoverlap(intervals):
         
     return (len(intervals) - len(tmp_intvs), tmp_intvs)
 
-
+intervals = [(1,2), (2,3), (3,4), (1,3)]
 print nonoverlap(intervals)
+
+
+intervals = [(1,5), ]
