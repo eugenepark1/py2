@@ -48,8 +48,9 @@ def nonoverlap(intervals):
         
     return (len(intervals) - len(tmp_intvs), tmp_intvs)
 
-intervals = [(1,2), (2,3), (3,4), (1,3)]
-print nonoverlap(intervals)
+intervalsOne = [(1,2), (2,3), (3,4), (1,3)]
+print nonoverlap(intervalsOne)
 
 
-intervals = [(1,5), ]
+intervalsTwo = [(1,10), (2,3), (5,7), (8,9), (6,10), (2,4)]
+print nonoverlap(intervalsTwo)
