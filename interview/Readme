@@ -14,3 +14,31 @@ space and time tradeoffs
 Dynamic programming
 Greedy Algorithm
 Iterative Improvements
+
+
+searching / sorting
+
+set operations
+probablity
+
+
+
+abstract class
+	Abstract classes are classes that contain one or more abstract methods. 
+	An abstract method is a method that is declared, but contains no implementation. 
+	Abstract classes may not be instantiated, and require subclasses to provide implementations for the abstract methods.
+	
+Encapsulation - The wrapping up of data and functions into a single unit (i.e. class) is commonly referred to as Encapsulation.
+	Example. A human body is a single unit (i.e. class) with multiple systems within it to run properly like nervous system, circulatory system etc.
+
+Abstraction - The mechanism of representing essential features without including the background details is referred to as abstraction.
+	Example. A driver of a car is more interested in driving a car rather than focusing on how the engine is working etc.
+	
+	0
+1. Abstraction is generalised term while Encapsulation is subset of Abstraction.
+2.Abstraction solves the problem in design level while Encapsulation solves in implementation level.
+3.Abstraction hides unwanted data and gives relevent data while Encapsulation hides code and data into a single unit to protect from outside world.
+4.Abstraction is Outer layout while Encapsulation is Inner layout.
+5.Abstraction is used in terms of design while Encapsulation used in terms of implementation. 
+
+Encapsulation is one of the four fundamental OOP concepts. The other three are inheritance, polymorphism, and abstraction.
