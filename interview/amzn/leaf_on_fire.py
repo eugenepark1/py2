@@ -39,23 +39,29 @@ threeNode_right_left.left = fourNode_right_left_left
 
 def get_path(root, node):
     
+    
     if root is None:
+        print "root is None"
         return {'path': [],
                 'found': False
             }
     
-    if root.value == node.value:
+    elif root.value == node.value:
+        print "root is equal to value (%s %s)" % (root.value, node.value)
+        
         print "found %s" % root.value
         return {'path': [node.value],
                 'found': True
                 }
     else:
+        print "else: %s" % root.value
+        
         left = get_path(root.left, node)
         right = get_path(root.right, node)
         
-        print "%s, left:%s right: %s (%s)" % (root.value, root.left.value, root.right.value, node.value)
-        print left
-        print right
+        print "left: %s (%s)" % (left, root.value)
+        print "right: %s (%s)" % (right, root.value)
+    
         
         if left['found']:
             return {'path': [root.value] + left['path'],
@@ -65,6 +71,10 @@ def get_path(root, node):
             return {'path': [root.value] + right['path'],
                     'found': True
                 }
+        else:
+            return {'path': [],
+                'found': False
+            }
  
  
 print get_path(oneNode, fourNode_right_left_left)
