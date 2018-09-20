@@ -81,18 +81,24 @@ def calculate_time_to_burn(root, fireLeaf):
     notVisitedNodes = gather_nodes(root)
     
     latest_fire_nodes = [fireLeaf]
+    cnt = 0
     while len(notVisitedNodes) > 0:
-        
+        cnt += 1
+        if cnt > 100:
+            break
         
         tmp_latest_fire_nodes = []
         # step
         for f_node in latest_fire_nodes:
+            
             notVisitedNodes.remove(f_node)
 
             # add parent, childrent to latest_fire_nodes
             f_node_path = get_path(root, f_node)
-            if len(f_node_path) > 1:
-                parent = f_node_path['path'] = -2
+            #print "%s (%s)" % (f_node.value, f_node_path)
+            
+            if len(f_node_path['path']) > 1:
+                parent = f_node_path['path'][-2]
                 
                 # add parent to latest firenode
                 for node in notVisitedNodes:
@@ -112,10 +118,11 @@ def calculate_time_to_burn(root, fireLeaf):
                         tmp_latest_fire_nodes.append(f_node.right)
                 except:
                     pass
+        
+        #print tmp_latest_fire_nodes        
         latest_fire_nodes = tmp_latest_fire_nodes
             
         t += 1
-        print t
     
     return t
     
