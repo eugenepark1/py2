@@ -6,6 +6,9 @@ Created on Sep 18, 2018
 
 
 def calculate_max_product_k(arr, k):
+    if k > len(arr):
+        raise Exception("k is bigger than len(arr): %s %s" % (k, len(arr)))
+    
     max_products_k = []
     arr = sorted(arr)
     i,j = 0, len(arr)-1
