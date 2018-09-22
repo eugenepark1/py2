@@ -23,31 +23,21 @@ def insertion_sort(arr):
         0  1  2
         2  5  1
     '''
-    def insert(arr, i, j):
+    def swap(arr, i, j):
         '''insert arr[i] into jth spot
         '''
         tmp = arr[i]
-        # shift items from jth by one to right for until i-1th item
-        k = i
-        while k >=j:
-            arr[k] = arr[k-1]
-            k -=1
-            
+        arr[i] = arr[j]
         arr[j] = tmp
 
     i = 0
     while i < len(arr):
-        j = i-1
-        do_swap = False
-        while  (j > 0 and arr[i] < arr[j]):
+        j = i
+        while  (j > 0 and arr[j] < arr[j-1]):
             # find the spot in left-side
+            swap(arr, j, j-1)
+            print "%s %s %s" % (arr,j,j-1)
             j -= 1
-            do_swap = True
-            #print "%s %s %s" % (arr,i,j)
-        
-        if do_swap:
-            print "insert(%s, %s, %s)" % (arr,i,j)
-            insert(arr, i , j)
         i += 1
     
     return arr
