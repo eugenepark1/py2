@@ -3,12 +3,33 @@ Created on Sep 21, 2018
 
 @author: eugene
 
+quicksort  O(nlogn) aka partition-exchange sort 
 Merge sort O(nlogn)
 insertion sort O(n^2)
 selection sort
 Bubble sort
+
 '''
 
+def quicksort(arr):
+    '''
+    algorithm quicksort(A, lo, hi) is
+    if lo < hi then
+        p := partition(A, lo, hi)
+        quicksort(A, lo, p - 1 )
+        quicksort(A, p + 1, hi)
+
+algorithm partition(A, lo, hi) is
+    pivot := A[hi]
+    i := lo    
+    for j := lo to hi - 1 do
+        if A[j] < pivot then
+            swap A[i] with A[j]
+            i := i + 1
+    swap A[i] with A[hi]
+    return i
+    '''
+    return
 
 def merge_sort(arr):
     if len(arr) == 1:
