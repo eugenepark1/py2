@@ -17,7 +17,7 @@ Testing - Expect questions like: How would you unit test the code you write? Wha
 inputs or test cases can you think of? How would you design end to end, integration, or
 performance tests for a real world system, for example Gmail? You will need to demonstrate a
 strong testing aptitude on the development, testing and release process.
-Sorting - Be familiar with common sorting functions and on what kind of input data they�re
+Sorting - Be familiar with common sorting functions and on what kind of input data they뭨e
 efficient on or not. Think about efficiency means in terms of runtime and space used. For
 example, in exceptional cases insertion-sort or radix-sort are much better than the generic
 QuickSort/MergeSort/HeapSort answers.
@@ -37,7 +37,7 @@ refreshing your memory on (or teaching yourself) the essentials of elementary pr
 theory and combinatorics. You should be familiar with n-choose-k problems and their ilk.
 Graphs - Consider if a problem can be applied with graph algorithms like distance, search,
 connectivity, cycle-detection, etc. There are three basic ways to represent a graph in memory
-(objects and pointers, matrix, and adjacency list) � familiarize yourself with each
+(objects and pointers, matrix, and adjacency list) � familiarize yourself with each
 representation and its pros and cons. You should know the basic graph traversal algorithms,
 breadth-first search and depth-first search. Know their computational complexity, their
 tradeoffs and how to implement them in real code.
@@ -62,3 +62,28 @@ tradeoffs. You should also have an understanding of how the internet actually wo
 familiar with the various pieces (routers, domain name servers, load balancers, firewalls, etc.).
 For information on system design, check out our research on distributed systems and parallel
 computing.
+
+
+Data Structure/Algorithms
+
+Problem solving: 
+-Write question on whiteboard, spend 2-5 minutes turning the interview into a conversation just about the question itself, ask good clarifying questions, use the whiteboard to map out different thoughts/ data points.  Make sure that both you and the interviewer have the same understanding of the problem. 
+-Start thinking out loud about potential algorithms that could be used for solving the problem. Even if you immediately know the most optimal approach, make sure that you are talking to the interviewer about other potential approaches and why yours seems most optimal.
+
+Algorithms:
+-Generally basic Algorithms from CS 101 books. Mostly binary search, sort. Make sure that you know Dijkstra’s algorithm by name. Be able to traverse a binary tree in every way thinkable. Depth-first traversal. In-place/ in-order. With recursion, without recursion. Know search algorithms to find certain characters in a string, sort algorithms to reverse certain characters in a string. Really know how to implement a DFS/ BFS properly, etc.
+-Runtimes: ALWAYS think about runtimes. Big O Notation. How would you improve the average or worst case runtimes of these problems. Can you get it to linear in space, linear in computational time? Look to optimize time complexity. 
+-Thinking about runtimes will almost force you to look for the right combination of algorithm & data structure, which is really what the Data Structure/ Algorithm assessment is all about. Find the most optimal approach.
+
+
+Data Structures:
+-Similar to Algorithms, a portion of our Data Structures assessment is based on basic data structures. Good to refresh on these since normally people use custom data structures at their job. Know the performance pros and cons, tradeoffs of hashing (hashmaps/ hashtables), know what a heap is, be able to turn a doubly linked list into a binary, etc. 
+-Know your collection libraries, language-specific libraries for data structures. (ie for Java - know the collection libraries in Guava. Know basic streams, the I/O). Basically be able to do data structures that contain other data structures.
+
+Coding/ Code Quality:
+
+-Get whiteboard if don’t have one already. Sharpen coding language fluency by practicing writing clean, concise, simple code on the whiteboard (don’t prepare with an editor). 
+-Practice Defensive Programming. Write code that proactively protects itself from nulls, empty strings, redundancy etc. Good to take on a slight sense of paranoia when writing your code. Always look for what can go wrong in your code and try to proactively adjust.
+-Debug/ review your code frequently. Look for any hard to find nulls, off-by-one errors, redundancy, etc. Tell your interviewer what you are doing and what you are looking for. 
+-Testing the code: proactively explain your test strategy/ approach to every interviewer before you even start coding. Talk about how you’ll ensure test coverage all the way down to the distributed systems level. While coding, always proactively ensure that the solution is fully tested, don’t wait for the interviewer to ask for test coverage. Proactively provide all of the basic test cases for the solution, and then provide 2-3 additional tests for odd edge/ corner cases. 
+
