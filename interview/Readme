@@ -1,3 +1,22 @@
+The P vs NP problem is a major unsolved problem in computer science
+It asks whether every problem whose solution can be quickly verified (in polynomial time) and can also be solved quickly
+
+A polynomial function is a function that can be defined by evaluating a polynomial.
+More precisely, a function f of one argument from a given domain is a polynomial function if there exists a polynomial
+
+
+
+NP problems are the existence of problems within NP but outside both P and NP-complete,
+
+The concept of polynomial time leads to several complexity classes in computational complexity theory. 
+Some important classes defined using polynomial time are the following.
+
+P: The complexity class of decision problems that can be solved on a deterministic Turing machine in polynomial time.
+NP: The complexity class of decision problems that can be solved on a non-deterministic Turing machine in polynomial time.
+
+
+
+
 look at tree/bin_tree_search.ph symmetric_tree.py same_tree.py
 
 
