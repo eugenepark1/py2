@@ -11,7 +11,7 @@ Bubble sort
 
 '''
 
-def quicksort(arr):
+def quicksort(arr, lo, hi):
     '''
     algorithm quicksort(A, lo, hi) is
     if lo < hi then
@@ -19,17 +19,41 @@ def quicksort(arr):
         quicksort(A, lo, p - 1 )
         quicksort(A, p + 1, hi)
 
-algorithm partition(A, lo, hi) is
-    pivot := A[hi]
-    i := lo    
-    for j := lo to hi - 1 do
-        if A[j] < pivot then
-            swap A[i] with A[j]
-            i := i + 1
-    swap A[i] with A[hi]
-    return i
+    algorithm partition(A, lo, hi) is
+        pivot := A[hi]
+        i := lo    
+        for j := lo to hi - 1 do
+            if A[j] < pivot then
+                swap A[i] with A[j]
+                i := i + 1
+        swap A[i] with A[hi]
+        return i
     '''
-    return
+    
+    if lo < hi:
+        p = partition(arr, lo, hi)
+        quicksort(arr, lo, p-1)
+        quicksort(arr, p+1, hi)
+    
+    def partition(arr, lo, hi):
+        
+        def swap(arr, x, y):
+            tmp = arr[x]
+            arr[x] = arr[y]
+            arr[y] = tmp
+        
+        pivot = arr[hi]
+        i = lo
+        for j in range(lo, hi-1):
+            if arr[j] < pivot:
+                swap(arr, i, j)
+                i += 1
+        
+        swap(arr, i, hi)
+        return i
+        
+    
+    return arr
 
 def merge_sort(arr):
     if len(arr) == 1:
@@ -100,3 +124,4 @@ def insertion_sort(arr):
 
 print insertion_sort([2,5,1,7,12,4,9,15,22])
 print merge_sort([2,5,1,7,12,4,9,15,22])
+print quicksort([2,5,1,7,12,4,9,15,22], 0, len([2,5,1,7,12,4,9,15,22])-1)
