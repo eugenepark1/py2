@@ -10,7 +10,11 @@ selection sort
 Bubble sort
 
 '''
-
+def swap(arr, x, y):
+    tmp = arr[x]
+    arr[x] = arr[y]
+    arr[y] = tmp
+    
 def quicksort(arr, lo, hi):
     '''
     algorithm quicksort(A, lo, hi) is
@@ -29,19 +33,8 @@ def quicksort(arr, lo, hi):
         swap A[i] with A[hi]
         return i
     '''
-    
-    if lo < hi:
-        p = partition(arr, lo, hi)
-        quicksort(arr, lo, p-1)
-        quicksort(arr, p+1, hi)
-    
     def partition(arr, lo, hi):
-        
-        def swap(arr, x, y):
-            tmp = arr[x]
-            arr[x] = arr[y]
-            arr[y] = tmp
-        
+
         pivot = arr[hi]
         i = lo
         for j in range(lo, hi-1):
@@ -51,8 +44,12 @@ def quicksort(arr, lo, hi):
         
         swap(arr, i, hi)
         return i
-        
-    
+
+    if lo < hi:
+        p = partition(arr, lo, hi)
+        quicksort(arr, lo, p-1)
+        quicksort(arr, p+1, hi)
+
     return arr
 
 def merge_sort(arr):
