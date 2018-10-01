@@ -15,7 +15,7 @@ def swap(arr, x, y):
     arr[x] = arr[y]
     arr[y] = tmp
     
-def quicksort(arr, lo, hi):
+def quicksort_old(arr, lo, hi):
     '''
     algorithm quicksort(A, lo, hi) is
     if lo < hi then
@@ -34,6 +34,7 @@ def quicksort(arr, lo, hi):
         return i
         ss
     '''
+    '''
     def partition(arr, lo, hi):
 
         pivot = arr[hi]
@@ -45,13 +46,73 @@ def quicksort(arr, lo, hi):
         
         swap(arr, i, hi)
         return i
+    '''
+    
+    def partition_old(arr, lo, hi):
 
+        pivot = arr[hi]
+        i = lo # keep track of which items are less than pivot
+        for j in range(lo, hi-1):
+            if arr[j] < pivot:
+                swap(arr, i, j)
+                i += 1
+        
+        swap(arr, i, hi)
+        
+        return i
+    print
+    print "quicksorting %s" % arr
     if lo < hi:
         p = partition(arr, lo, hi)
+        print "\tafter partitioned: %s %s" % (arr, arr[p])
+        print "\tquicksorting: %s" % (arr[lo:p-1])
+        print "\tquicksorting: %s" % (arr[p+1:hi])
         quicksort(arr, lo, p-1)
         quicksort(arr, p+1, hi)
 
     return arr
+
+
+# This function takes last element as pivot, places
+# the pivot element at its correct position in sorted
+# array, and places all smaller (smaller than pivot)
+# to left of pivot and all greater elements to right
+# of pivot
+def partition(arr, low, high):
+    i = ( low-1 )         # index of smaller element
+    pivot = arr[high]     # pivot
+    for j in range(low , high):
+        # If current element is smaller than or
+        # equal to pivot
+        if arr[j] <= pivot:
+            # increment index of smaller element
+            i = i+1
+            arr[i],arr[j] = arr[j],arr[i]
+ 
+    arr[i+1],arr[high] = arr[high],arr[i+1]
+
+    return ( i+1 )
+ 
+# The main function that implements QuickSort
+# arr[] --> Array to be sorted,
+# low  --> Starting index,
+# high  --> Ending index
+ 
+# Function to do Quick sort
+def quicksort(arr, low, high):
+    #print
+    #print "quicksorting %s" % arr
+    if low < high:
+        # pi is partitioning index, arr[p] is now
+        # at right place
+        pi = partition(arr, low, high)
+        # Separately sort elements before
+        # partition and after partition
+        quicksort(arr, low, pi-1)
+        quicksort(arr, pi+1, high)
+        
+    return arr
+
 
 def merge_sort(arr):
     if len(arr) == 1:
