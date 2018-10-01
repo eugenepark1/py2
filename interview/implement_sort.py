@@ -87,10 +87,13 @@ def partition(arr, low, high):
         if arr[j] <= pivot:
             # increment index of smaller element
             i = i+1
+            print "\t\tin partition (inloop %s %s): %s" % (i, j, arr)
             arr[i],arr[j] = arr[j],arr[i]
- 
-    arr[i+1],arr[high] = arr[high],arr[i+1]
+            print "\t\tin partition (inloop %s %s): %s" % (i, j, arr)
 
+    print "\t\tin partition (outloop): %s" % arr
+    arr[i+1],arr[high] = arr[high],arr[i+1]
+    print "\t\tin partition (outloop): %s" % arr
     return ( i+1 )
  
 # The main function that implements QuickSort
@@ -100,12 +103,13 @@ def partition(arr, low, high):
  
 # Function to do Quick sort
 def quicksort(arr, low, high):
-    #print
-    #print "quicksorting %s" % arr
+    print
+    print "quicksorting %s" % arr
     if low < high:
         # pi is partitioning index, arr[p] is now
         # at right place
         pi = partition(arr, low, high)
+        print "\tafter partitioned: %s %s" % (arr, arr[pi])
         # Separately sort elements before
         # partition and after partition
         quicksort(arr, low, pi-1)
@@ -183,4 +187,4 @@ def insertion_sort(arr):
 
 print insertion_sort([2,5,1,7,12,4,9,15,22])
 print merge_sort([2,5,1,7,12,4,9,15,22])
-print quicksort([2,5,1,7,12,4,9,15,22], 0, len([2,5,1,7,12,4,9,15,22])-1)
+print quicksort([2,5,7,1,6], 0, len([2,5,7,1,6])-1)
