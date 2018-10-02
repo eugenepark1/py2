@@ -79,22 +79,26 @@ def quicksort_old(arr, lo, hi):
 # to left of pivot and all greater elements to right
 # of pivot
 def partition(arr, low, high):
-    i = ( low-1 )         # index of smaller element
+    #i = ( low-1 )         # index of smaller element
+    i = low
     pivot = arr[high]     # pivot
     for j in range(low , high):
         # If current element is smaller than or
         # equal to pivot
         if arr[j] <= pivot:
             # increment index of smaller element
-            i = i+1
+            #i = i+1
             print "\t\tin partition (inloop %s %s): %s" % (i, j, arr)
             arr[i],arr[j] = arr[j],arr[i]
             print "\t\tin partition (inloop %s %s): %s" % (i, j, arr)
+            i = i+1
 
     print "\t\tin partition (outloop): %s" % arr
-    arr[i+1],arr[high] = arr[high],arr[i+1]
+    #arr[i+1],arr[high] = arr[high],arr[i+1]
+    arr[i],arr[high] = arr[high],arr[i]
     print "\t\tin partition (outloop): %s" % arr
-    return ( i+1 )
+    #return ( i+1 )
+    return i
  
 # The main function that implements QuickSort
 # arr[] --> Array to be sorted,
