@@ -85,7 +85,7 @@ def partition(arr, low, high):
     for j in range(low , high):
         # If current element is smaller than or
         # equal to pivot
-        if arr[j] <= pivot:
+        if arr[j] < pivot:
             # increment index of smaller element
             #i = i+1
             print "\t\tin partition (inloop %s %s): %s" % (i, j, arr)
@@ -113,7 +113,7 @@ def quicksort(arr, low, high):
         # pi is partitioning index, arr[p] is now
         # at right place
         pi = partition(arr, low, high)
-        print "\tafter partitioned: %s %s" % (arr, arr[pi])
+        print "\tafter partitioned: %s %s (%s)" % (arr, arr[pi], pi)
         # Separately sort elements before
         # partition and after partition
         quicksort(arr, low, pi-1)
