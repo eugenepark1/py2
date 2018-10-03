@@ -3,6 +3,8 @@ Created on Oct 3, 2018
 
 @author: eugene
 '''
+import unittest
+
 def countSubstrings(s):
     if not s:
         return 0
@@ -60,5 +62,67 @@ def countSubstrings_expand_center(S):
             left -= 1
             right += 1
     return ans
+
+def countSubstrings_dp(s):
+    '''
+    dp: careful brute force
+    dp: break into subproblems, reuse solved calculation rather than resolve
+    s
+    pcnt = s[:i] + s[i]
+    '''
+    return
     
-print countSubstrings("aaa")
+
+def fibs_dp():
+    '''
+    f1 = f2 = 1
+    fn = fn-1 + fn-2
+    
+    memoize what
+    what are subproblem
+    '''
+    def fib_naive(n):
+        if n <= 2:
+            return 1
+        else: 
+            return fib_naive(n-1) + fib_naive(n-2)
+    
+    memo = {}
+    def fib_memoized(n):
+        if n in memo:
+            return memo[n]
+        if n <= 2:
+            f = 1
+        else: 
+            f= fib_naive(n-1) + fib_naive(n-2)
+        memo[n] = f
+        return f
+    
+    def fib_memo_bottomup(n):
+        fib = {}
+        for k in range(len(n)+1):
+            if k <=2:
+                f = 1
+            else:
+                f = fib[k-1] + fib[k-2]
+            fib[k] = f
+        return fib[n]
+    
+    return
+
+
+def shortest_path():
+    '''
+    (s) -> () () ()   (u)   (v)
+     s min_paths(s,u)            + (u,v)
+    '''
+    return
+
+class TestSolution(unittest.TestCase):
+    def test_aaa(self):
+        self.assertEqual(countSubstrings("aaa"), 6)
+
+
+
+if __name__ == "__main__":
+    unittest.main()

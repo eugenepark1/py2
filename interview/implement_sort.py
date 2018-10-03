@@ -192,3 +192,6 @@ def insertion_sort(arr):
 print insertion_sort([2,5,1,7,12,4,9,15,22])
 print merge_sort([2,5,1,7,12,4,9,15,22])
 print quicksort([2,5,7,1,6], 0, len([2,5,7,1,6])-1)
+
+for i in range(1):
+    print i
